@@ -15,9 +15,17 @@ interface BaseImage {
 interface APIImage extends BaseImage {}
 
 
+interface CustomImage extends BaseImage {
+  user: {
+    name: string;
+  };
+  likes: number;
+}
+
+
 interface ImageGalleryProps {
-  images: APIImage[];
-  onImageClick: (image: APIImage) => void;
+  images: CustomImage[]; 
+  onImageClick: (image: CustomImage) => void; 
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {

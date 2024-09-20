@@ -21,7 +21,6 @@ interface BaseImage {
   alt_description: string;
 }
 
-
 interface APIImage extends BaseImage {}
 
 
