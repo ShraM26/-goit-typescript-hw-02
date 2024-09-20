@@ -2,7 +2,7 @@ import React from 'react';
 import ImageCard from './ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-interface APIImage {
+interface BaseImage {
   id: string;
   urls: {
     small: string;
@@ -10,6 +10,10 @@ interface APIImage {
   };
   alt_description: string;
 }
+
+
+interface APIImage extends BaseImage {}
+
 
 interface ImageGalleryProps {
   images: APIImage[];

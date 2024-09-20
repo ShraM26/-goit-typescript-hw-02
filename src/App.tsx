@@ -11,14 +11,21 @@ import ImageModal from './components/ImageModal/ImageModal';
 
 const API_KEY = 'O8xx4BoKhrynM_idIMcZNVlgm97d4XejwArnmPzdAZM';
 
-interface CustomImage {
+
+interface BaseImage {
   id: string;
   urls: {
     small: string;
     regular: string;
   };
   alt_description: string;
-  description?: string;
+}
+
+
+interface APIImage extends BaseImage {}
+
+
+interface CustomImage extends BaseImage {
   user: {
     name: string;
   };
