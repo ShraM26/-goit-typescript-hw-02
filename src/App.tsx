@@ -4,7 +4,7 @@ import { Toaster, toast } from 'react-hot-toast';
 
 import SearchBar from './components/SearchBar/SearchBar';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
-import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+import LoadMoreBtn from './components/LoadMoreBtn/LoadMorebtn';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import ImageModal from './components/ImageModal/ImageModal';
