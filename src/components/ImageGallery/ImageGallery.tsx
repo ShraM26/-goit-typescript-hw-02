@@ -2,7 +2,7 @@ import React from 'react';
 import ImageCard from './ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-interface Image {
+interface CustomImage {
   id: string;
   urls: {
     small: string;
@@ -12,8 +12,8 @@ interface Image {
 }
 
 interface ImageGalleryProps {
-  images: Image[];
-  onImageClick: (image: Image) => void;
+  images: CustomImage[];
+  onImageClick: (image: CustomImage) => void;
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {

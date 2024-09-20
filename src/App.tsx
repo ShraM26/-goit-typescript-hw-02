@@ -11,7 +11,7 @@ import ImageModal from './components/ImageModal/ImageModal';
 
 const API_KEY = 'O8xx4BoKhrynM_idIMcZNVlgm97d4XejwArnmPzdAZM';
 
-interface Image {
+interface CustomImage {
   id: string;
   urls: {
     small: string;
@@ -26,10 +26,10 @@ interface Image {
 }
 
 const App: React.FC = () => {
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<CustomImage[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [selectedImage, setSelectedImage] = useState<CustomImage | null>(null);
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>('');
   const galleryEndRef = useRef<HTMLDivElement | null>(null);
@@ -75,7 +75,7 @@ const App: React.FC = () => {
     }
   };
 
-  const handleImageClick = (image: Image) => {
+  const handleImageClick = (image: CustomImage) => {
     setSelectedImage(image);
   };
 
