@@ -2,30 +2,22 @@ import React from 'react';
 import ImageCard from './ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-interface BaseImage {
+export interface Image {
   id: string;
   urls: {
     small: string;
     regular: string;
   };
   alt_description: string;
-}
-
-
-interface APIImage extends BaseImage {}
-
-
-interface CustomImage extends BaseImage {
   user: {
     name: string;
   };
   likes: number;
 }
 
-
 interface ImageGalleryProps {
-  images: CustomImage[]; 
-  onImageClick: (image: CustomImage) => void; 
+  images: Image[];  
+  onImageClick: (image: Image) => void; 
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {

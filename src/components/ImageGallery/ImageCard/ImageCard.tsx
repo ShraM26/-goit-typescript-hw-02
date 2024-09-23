@@ -1,13 +1,5 @@
 import React from 'react';
-
-interface Image {
-  id: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-  alt_description: string;
-}
+import { Image } from '../ImageGallery'
 
 interface ImageCardProps {
   image: Image;

@@ -8,34 +8,15 @@ import LoadMoreBtn from './components/LoadMoreBtn/LoadMorebtn';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import ImageModal from './components/ImageModal/ImageModal';
+import { Image } from './components/ImageGallery/ImageGallery'; 
 
 const API_KEY = 'O8xx4BoKhrynM_idIMcZNVlgm97d4XejwArnmPzdAZM';
 
-
-interface BaseImage {
-  id: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-  alt_description: string;
-}
-
-interface APIImage extends BaseImage {}
-
-
-interface CustomImage extends BaseImage {
-  user: {
-    name: string;
-  };
-  likes: number;
-}
-
 const App: React.FC = () => {
-  const [images, setImages] = useState<CustomImage[]>([]);
+  const [images, setImages] = useState<Image[]>([]);  
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedImage, setSelectedImage] = useState<CustomImage | null>(null);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);  
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>('');
   const galleryEndRef = useRef<HTMLDivElement | null>(null);
@@ -46,7 +27,7 @@ const App: React.FC = () => {
     setQuery(searchQuery);
     setPage(1);
     try {
-      const response = await axios.get('https://api.unsplash.com/search/photos', {
+      const response = await axios.get<{ results: Image[] }>('https://api.unsplash.com/search/photos', {
         params: { query: searchQuery, page: 1, per_page: 9 },
         headers: { Authorization: `Client-ID ${API_KEY}` }
       });
@@ -62,7 +43,7 @@ const App: React.FC = () => {
   const loadMoreImages = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('https://api.unsplash.com/search/photos', {
+      const response = await axios.get<{ results: Image[] }>('https://api.unsplash.com/search/photos', {
         params: { query, page: page + 1, per_page: 9 },
         headers: { Authorization: `Client-ID ${API_KEY}` }
       });
@@ -81,7 +62,7 @@ const App: React.FC = () => {
     }
   };
 
-  const handleImageClick = (image: CustomImage) => {
+  const handleImageClick = (image: Image) => {
     setSelectedImage(image);
   };
 
